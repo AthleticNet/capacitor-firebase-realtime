@@ -36,7 +36,7 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
         if firebaseUserId > 0 && signedInUserId != firebaseUserId {
             print("CapFire userId mismatch")
             signOut(call)
-            firebaseUserId=0
+            firebaseUserId = 0
         }
         call.resolve(["signedIn": firebaseUserId])
     }
