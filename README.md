@@ -15,7 +15,7 @@ npx cap sync
 
 * [`echo(...)`](#echo)
 * [`signOut()`](#signout)
-* [`init(...)`](#init)
+* [`initialize(...)`](#initialize)
 * [`signInWithCustomToken(...)`](#signinwithcustomtoken)
 * [`updateChildren(...)`](#updatechildren)
 
@@ -50,10 +50,10 @@ signOut() => Promise<null>
 --------------------
 
 
-### init(...)
+### initialize(...)
 
 ```typescript
-init(options: { signedInUserId: number; }) => Promise<{ signedIn: boolean; }>
+initialize(options: { signedInUserId: number; }) => Promise<{ signedIn: boolean; }>
 ```
 
 | Param         | Type                                     |

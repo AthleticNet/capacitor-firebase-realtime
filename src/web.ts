@@ -11,7 +11,7 @@ export class CapacitorFirebaseRealtimeWeb extends WebPlugin implements Capacitor
   async  signOut(): Promise<null> {
     return null;
   }
-  async init(options: { signedInUserId: number }): Promise<{ signedIn: boolean }>{
+  async initialize(options: { signedInUserId: number }): Promise<{ signedIn: boolean }>{
     JSON.stringify(options);
     return { signedIn: false };
   }

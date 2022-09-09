@@ -70,7 +70,7 @@ public class CapacitorFirebaseRealtimePlugin extends Plugin {
     }
 
     @PluginMethod()
-    public void init(PluginCall call) {
+    public void initialize(PluginCall call) {
         JSObject ret = new JSObject();
         int signedInUserId = call.getInt("signedInUserId");
         currentUser = fireAuth.getCurrentUser();
