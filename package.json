@@ -1,6 +1,6 @@
 {
   "name": "@athletic/capacitor-firebase-realtime",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Capacitor Firebase Realtime plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
