@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorFirebaseRealtime.podspec"
+    "AthleticCapacitorFirebaseRealtime.podspec"
   ],
   "author": "AthleticNet",
   "license": "MIT",
