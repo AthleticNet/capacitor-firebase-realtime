@@ -15,7 +15,9 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
     private    var ref: DatabaseReference!
     
     override public func load() {
-        FirebaseApp.configure()
+        if (FirebaseApp.app() == nil) {
+            FirebaseApp.configure()
+        }
         ref = Database.database().reference()
     }
     
