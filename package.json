@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-firebase-realtime",
+  "name": "@athletic/capacitor-firebase-realtime",
   "version": "0.0.1",
   "description": "Capacitor Firebase Realtime plugin",
   "main": "dist/plugin.cjs.js",
@@ -13,14 +13,14 @@
     "ios/Plugin/",
     "CapacitorFirebaseRealtime.podspec"
   ],
-  "author": "",
-  "license": "other",
+  "author": "AthleticNet",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AthleticNet/TBD.git"
+    "url": "git+https://github.com/AthleticNet/capacitor-firebase-realtime.git"
   },
   "bugs": {
-    "url": "https://github.com/AthleticNet/TBD/issues"
+    "url": "https://github.com/AthleticNet/capacitor-firebase-realtime/issues"
   },
   "keywords": [
     "capacitor",
