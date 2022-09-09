@@ -39,16 +39,7 @@ Examples here:
 @CapacitorPlugin(name = "CapacitorFirebaseRealtime")
 public class CapacitorFirebaseRealtimePlugin extends Plugin {
 
-    private CapacitorFirebaseRealtime implementation = new CapacitorFirebaseRealtime();
-
-    @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
-    }
+    // private CapacitorFirebaseRealtime implementation = new CapacitorFirebaseRealtime();
 
     private FirebaseAuth fireAuth;
     private FirebaseDatabase fireDb;
