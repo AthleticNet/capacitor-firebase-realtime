@@ -10,8 +10,6 @@ import FirebaseDatabase
  */
 @objc(CapacitorFirebaseRealtimePlugin)
 public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
-    private let implementation = CapacitorFirebaseRealtime()
-    
     private    var ref: DatabaseReference!
     
     override public func load() {
