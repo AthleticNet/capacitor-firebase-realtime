@@ -38,9 +38,9 @@ Examples here:
 
 @CapacitorPlugin(name = "CapacitorFirebaseRealtime")
 public class CapacitorFirebaseRealtimePlugin extends Plugin {
-    private FirebaseAuth fireAuth;
-    private FirebaseDatabase fireDb;
-    private FirebaseUser currentUser = null;
+    private static FirebaseAuth fireAuth = null;
+    private static FirebaseDatabase fireDb = null;
+    private static FirebaseUser currentUser = null;
 
     private static final String TAG = "AnetFirebaseRealtime";
 
@@ -48,13 +48,16 @@ public class CapacitorFirebaseRealtimePlugin extends Plugin {
     public void load() {
         super.load();
 
+        if(fireDb == null) {
+            fireDb = FirebaseDatabase.getInstance();
+            fireDb.setPersistenceEnabled(true);
+        }
+
         fireAuth = FirebaseAuth.getInstance();
-        fireDb = FirebaseDatabase.getInstance();
         currentUser = fireAuth.getCurrentUser();
 
         Log.d(TAG, "loaded");
 
-        fireDb.setPersistenceEnabled(true);
     }
 
     @PluginMethod()
