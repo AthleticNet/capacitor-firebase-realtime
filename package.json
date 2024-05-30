@@ -1,6 +1,6 @@
 {
   "name": "@athletic/capacitor-firebase-realtime",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Capacitor Firebase Realtime plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -45,10 +45,10 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
     "@capacitor/docgen": "^0.2.1",
-    "@capacitor/ios": "^5.0.0",
+    "@capacitor/ios": "^6.0.0",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^3.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
@@ -58,10 +58,10 @@
     "rimraf": "^5.0.1",
     "rollup": "^3.25.1",
     "swiftlint": "^1.0.2",
-    "typescript": "~5.0.0"
+    "typescript": "~5.4.2"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.0"
+    "@capacitor/core": "^6.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
