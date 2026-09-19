@@ -9,16 +9,24 @@ import FirebaseDatabase
  * here: https://capacitorjs.com/docs/plugins/ios
  */
 @objc(CapacitorFirebaseRealtimePlugin)
-public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
-    private    var ref: DatabaseReference!
-    
+public class CapacitorFirebaseRealtimePlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "CapacitorFirebaseRealtimePlugin"
+    public let jsName = "CapacitorFirebaseRealtime"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "signOut", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "initialize", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "signInWithCustomToken", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "updateChildren", returnType: CAPPluginReturnPromise)
+    ]
+    private var ref: DatabaseReference!
+
     override public func load() {
-        if (FirebaseApp.app() == nil) {
+        if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
         ref = Database.database().reference()
     }
-    
+
     @objc func signOut(_ call: CAPPluginCall) {
         do {
             try Auth.auth().signOut()
@@ -28,10 +36,10 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
             call.reject(signOutError.localizedDescription, nil, signOutError)
         }
     }
-    
+
     @objc func initialize(_ call: CAPPluginCall) {
         let signedInUserId = call.getInt("signedInUserId") ?? 0
-        let currentUser = Auth.auth().currentUser;
+        let currentUser = Auth.auth().currentUser
         var firebaseUserId = Int(currentUser?.uid ?? "0") ?? 0
         if firebaseUserId > 0 && signedInUserId != firebaseUserId {
             print("CapFire userId mismatch")
@@ -40,11 +48,11 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
         }
         call.resolve(["signedIn": firebaseUserId])
     }
-    
+
     @objc func signInWithCustomToken(_ call: CAPPluginCall) {
         let token = call.getString("token") ?? ""
-        
-        Auth.auth().signIn(withCustomToken: token) { user, error in
+
+        Auth.auth().signIn(withCustomToken: token) { _, error in
             if let error = error {
                 print("Error signIn withCustomToken: \(error).")
                 call.reject("Error signIn withCustomToken: \(error).")
@@ -53,12 +61,14 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
             }
         }
     }
-    
+
     @objc func updateChildren(_ call: CAPPluginCall) {
         let path = call.getString("path") ?? ""
-        let data = call.getAny("data")
-        ref.child(path).updateChildValues(data as! [AnyHashable : Any]) {
-            (error:Error?, ref:DatabaseReference) in
+        guard let data = call.getAny("data") as? [AnyHashable: Any] else {
+            call.reject("Must provide a data object")
+            return
+        }
+        ref.child(path).updateChildValues(data) { (error: Error?, _: DatabaseReference) in
             if let error = error {
                 print("Data could not be saved: \(error).")
                 call.reject("Data could not be saved: \(error).")
@@ -66,6 +76,5 @@ public class CapacitorFirebaseRealtimePlugin: CAPPlugin {
                 call.resolve()
             }
         }
-        
     }
 }
