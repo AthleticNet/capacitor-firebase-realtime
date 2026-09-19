@@ -35,6 +35,8 @@ Build and validate the web and native projects.
 
 This is useful to run in CI to verify that the plugin builds for all platforms.
 
+The iOS step builds the Swift package described by `Package.swift` in the repo root with `xcodebuild` (no `pod install` needed) and requires macOS with Xcode. To work on the iOS code locally, open `Package.swift` in Xcode. The podspec at the repo root is kept in sync with `ios/Sources/` for CocoaPods-based apps.
+
 #### `npm run lint` / `npm run fmt`
 
 Check formatting and code quality, autoformat/autofix if possible.

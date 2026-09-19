@@ -5,9 +5,23 @@ Capacitor Firebase Realtime plugin
 ## Install
 
 ```bash
-npm install capacitor-firebase-realtime
+npm install @athletic/capacitor-firebase-realtime
 npx cap sync
 ```
+
+## iOS
+
+Both Swift Package Manager and CocoaPods are supported.
+
+- **Swift Package Manager** (default for Capacitor 6+ apps): `npx cap sync ios` adds the
+  `AthleticCapacitorFirebaseRealtime` package to your app's `CapApp-SPM` package automatically.
+  Depends on `firebase-ios-sdk` 11.6 through 12.x.
+- **CocoaPods**: `npx cap sync ios` adds the `AthleticCapacitorFirebaseRealtime` pod to your
+  Podfile. It depends on the `FirebaseAuth` and `FirebaseDatabase` pods and is built as a static
+  framework.
+
+Your app must include its own `GoogleService-Info.plist`; the plugin calls
+`FirebaseApp.configure()` on load if no default Firebase app exists yet.
 
 ## API
 

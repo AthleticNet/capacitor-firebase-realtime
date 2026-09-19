@@ -1,6 +1,6 @@
 {
   "name": "@athletic/capacitor-firebase-realtime",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "description": "Capacitor Firebase Realtime plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,9 @@
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "ios/Plugin/",
+    "ios/Sources",
+    "ios/Tests",
+    "Package.swift",
     "AthleticCapacitorFirebaseRealtime.podspec"
   ],
   "author": "AthleticNet",
@@ -30,7 +32,7 @@
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
+    "verify:ios": "xcodebuild build -scheme AthleticCapacitorFirebaseRealtime -destination generic/platform=iOS",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
@@ -42,7 +44,8 @@
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "publish:cocoapod": "pod trunk push ./AthleticCapacitorFirebaseRealtime.podspec --allow-warnings"
   },
   "devDependencies": {
     "@capacitor/android": "^8.0.0",
